@@ -7,5 +7,30 @@
 </head>
 <body>
     <h1>HELLO WORD</h1>
+
+    <script>
+
+        fetch("http://localhost:8080/",{method:"post"})
+        .then(res=>{
+            return res.text()
+        }).then(html=>{
+            console.log(html)
+        })
+
+        fetch('http://localhost:8080/',{method:"put"})
+        .then(res=>{
+            return res.text()
+        }).then(html=>{
+            console.log(html)
+        })
+
+        fetch('http://localhost:8080/',{method:"delete"})
+        .then(res=>{
+            return res.text()
+        }).then(html=>{
+            console.log(html)
+        })
+        
+    </script>
 </body>
 </html>
