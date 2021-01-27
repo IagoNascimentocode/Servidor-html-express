@@ -5,21 +5,20 @@ const PORT = 8080;
 
 app.use("/meusite",express.static(path.join(__dirname,"client")))
 
-app.get("/",(req,res)=>{
 
-    res.send("<h1>Hellow Word From GET</h1>")
-})
-app.post("/",(req,res)=>{
+let consoleMethod = (req,res,next)=>{
+    console.log(req.method)
+    next()
 
-    res.send("<h1>Hellow Word From POST</h1>")
-})
-app.put("/",(req,res)=>{
-    
-    res.send("<h1>Hellow Word From PUT</h1>")
-})
-app.delete("/",(req,res)=>{
+}
+let hello = (req,res)=>{
 
-    res.send("<h1>Hellow Word From DELETE</h1>")
-})
+    res.send("<h1>Hellow Word</h1>")
+}
+
+app.get("/",consoleMethod,hello)
+app.post("/",consoleMethod, hello)
+app.put("/",consoleMethod,hello)
+app.delete("/",consoleMethod,hello)
 
 app.listen(PORT, ()=>{console.log(`Server Running on Port:${PORT}`)})
